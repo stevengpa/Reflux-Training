@@ -1,0 +1,44 @@
+{
+  "name": "reflux-training",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "browserify": {
+    "transform": [
+      "babelify",
+      "reactify"
+    ]
+  },
+  "scripts": {
+    "gulp-run": "gulp run",
+    "server": "nodemon server.js",
+    "start": "npm run server && npm run gulp-run"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel": "^5.8.23",
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "locallydb": "0.0.9",
+    "path": "^0.12.7",
+    "react": "^0.13.3",
+    "react-bootstrap": "^0.26.4",
+    "react-router": "^0.13.3",
+    "reflux": "^0.3.0"
+  },
+  "devDependencies": {
+    "babelify": "^6.3.0",
+    "browserify": "^11.0.1",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^5.1.0",
+    "gulp-browserify": "^0.5.1",
+    "gulp-jshint": "^1.11.2",
+    "gulp-nodemon": "^2.0.4",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.4.1",
+    "reactify": "^1.1.1"
+  }
+}
