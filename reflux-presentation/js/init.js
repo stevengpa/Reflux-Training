@@ -1,0 +1,2 @@
+impress().init();
+hljs.initHighlightingOnLoad();

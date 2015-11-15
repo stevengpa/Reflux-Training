@@ -1,0 +1,153 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=1024" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>Reflux</title>
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+  <link href="css/impress-demo.css" rel="stylesheet" />
+  <link rel="shortcut icon" href="favicon.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="stylesheet" type="text/css" href="libs/highlight/styles/monokai-sublime.css">
+  <link rel="stylesheet" type="text/css" href="css/reflux.css" />
+</head>
+
+<body class="impress-not-supported">
+<div class="fallback-message">
+  <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+  <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div id="impress">
+
+  <div id="main-title" class="step slide" data-x="-1000" data-y="-1500">
+    <p class="pss-title">Reflux</p>
+  </div>
+
+  <div class="step slide" data-x="1000" data-y="-1500">
+    <p class="pss-subtitle">Single data flow pattern</p>
+    <div class="data-container">
+      <img class="img-data-flow" src="images/data-flow.png" />
+    </div>
+  </div>
+
+  <div id="action" class="step" data-x="0" data-y="0" data-scale="1">
+    <h1>REFLUX ACTIONS</h1>
+  </div>
+
+
+  <div id="actions-sugar" class="step slide" data-x="850" data-y="3000" data-rotate="90" data-scale="1">
+    <p class="pss-subtitle"></p>
+    <div class="data-container">
+      <ul class="action-detail-list">
+        <li class="action-detail-item">preEmit</li>
+        <li class="action-detail-item">shouldEmit <span class="small-q">(bool)</li>
+        <li class="action-detail-item">ActionMethods</li>
+        <li class="action-detail-item">Synchronous Functions</li>
+        <li class="action-detail-item">Asynchronous Functions</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="stores" class="step" data-x="3500" data-y="2100" data-rotate="180" data-scale="1">
+    <h1>REFLUX STORES</h1>
+  </div>
+
+  <div id="stores-sugar" class="step slide" data-x="8500" data-y="200" data-rotate="300" data-scale="1">
+    <div class="data-container">
+      <ul class="store-detail-list">
+        <li class="store-detail-item">mixins</li>
+        <li class="store-detail-item">listenTo <span class="small-q">(Action)</span></li>
+        <li class="store-detail-item">listenToMany <span class="small-q">(Action)</span></li>
+        <li class="store-detail-item">listenables <span class="small-q">(Action)</span></li>
+        <li class="store-detail-item">StoreMethods</li>
+        <li class="store-detail-item">getInitialState</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="react" class="step" data-x="-3825" data-y="2325" data-z="-3000" data-rotate="300" data-scale="1">
+    <h1>REACT COMPONENTS</h1>
+  </div>
+
+  <div id="react-sugar" class="step slide" data-x="3500" data-y="-850" data-rotate="270" data-scale="1">
+    <div class="data-container">
+      <ul class="react-detail-list">
+        <li class="react-detail-item">connect <span class="small-q">(State)</span></li>
+        <li class="react-detail-item">connectFilter <span class="small-q">(State)</span></li>
+        <li class="react-detail-item">listenTo <span class="small-q">(Store)</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="demo-action" class="step" data-x="2000" data-y="-600" data-scale="1">
+    <div class="sq sq-action"><spa class="des-action">ACTION<span></div>
+    <pre class="pre-spa">
+      <code class="javascript">
+       const Actions = Reflux.createActions(["buyPizza"]);
+      </code>
+    </pre>
+  </div>
+
+  <div id="demo-store" class="step" data-x="7000" data-y="-600" data-scale="1">
+    <div class="sq sq-store"><spa class="des-store">STORE<span></div>
+    <pre class="pre-spa pre-store">
+      <code class="javascript">
+        const state = {
+          happy: false
+        };
+
+        const Store = Reflux.createStore({
+          listenables: [Actions],
+          getInitialState: function() {
+            return state;
+          },
+          onBuyPizza: function() {
+            state.happy = true;
+            this.trigger(state);
+          },
+        });
+      </code>
+    </pre>
+  </div>
+
+  <div id="demo-react" class="step" data-x="10000" data-y="-1000" data-scale="1">
+    <div class="sq sq-react"><spa class="des-react">REACT COMPONENT<span></div>
+    <pre class="pre-spa pre-react">
+      <code class="javascript">
+       const HappyPizza = React.createClass({
+          mixins: [
+            Reflux.listenTo(Store, "onBuyPizza"),
+            Reflux.connect(Store, "pizza"), // this.state.pizza.happy
+          ],
+          onBuyPizza(state) {
+            if (state.happy)
+              alert(" Yay !!! ");
+            else
+              alert(" :'( ");
+          },
+          render() {
+            < Button onClick={Actions.buyPizza}>Buy Pizza< /Button>
+          }
+      });
+      </code>
+    </pre>
+  </div>
+
+  <div id="questions" class="step" data-x="20000" data-y="-1000" data-z="-3000" data-rotate="300" data-scale="1">
+    <div class="data-container">
+      <h1 class="questions">?</h1>
+    </div>
+  </div>
+
+
+</div>
+
+<script src="js/tabNavigation.js"></script>
+<script src="js/impress.js"></script>
+<script type="text/javascript" src="libs/highlight/highlight.pack.js"></script>
+<script src="js/init.js"></script>
+</body>
+</html>

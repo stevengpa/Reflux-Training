@@ -1,0 +1,63 @@
+.pss-title {
+	font-size: 128px;
+	position: absolute;
+	top: 300px;
+	bottom: 0;
+	left: 230px;
+	right: 0;
+	text-transform: uppercase;
+}
+
+.pss-subtitle {
+	font-size: 42px;
+	margin-bottom: 16px;
+	text-transform: uppercase;
+	margin-top: 32px;
+}
+
+.data-container {
+	margin-top: 32px;
+	text-align: center;
+}
+
+/* SINGLE DATA FLOW */
+.img-data-flow {
+	width: 750px;
+	height: 200px;
+	margin-top: 116px;
+	margin-top: 92px;
+}
+
+.action-detail-list, .store-detail-list, .react-detail-list {
+	font-size: 64px;
+}
+
+.action-detail-item, .store-detail-item, .react-detail-item {
+  font-size: 64px;
+  line-height: 99px;
+}
+
+.store-detail-item {
+	line-height: 90px;
+}
+
+.small-q {
+	opacity: 0.3;
+}
+
+.react-detail-list {
+	margin-top: 144px;
+}
+
+.pre-spa {
+	overflow: scroll;
+	font-size: 24px;
+}
+
+.pre-react, .pre-store {
+	font-size: 22px;
+}
+
+.questions {
+	font-size: 256px;
+}
